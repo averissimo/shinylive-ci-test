@@ -56,30 +56,30 @@ jobs:
         # - name: Set up renv
         #   uses: r-lib/actions/setup-renv@v2
 
-        # - name: Set up Quarto
-        #   uses: quarto-dev/quarto-actions/setup@v2
+        - name: Set up Quarto
+          uses: quarto-dev/quarto-actions/setup@v2
 
-        # - name: Check if shinylive is installed
-        #   run: Rscript -e "if (!requireNamespace('shinylive', quietly = TRUE)) { stop('shinylive package is not installed') } else { cat('shinylive package is installed\n') }"
+        - name: Check if shinylive is installed
+          run: Rscript -e "if (!requireNamespace('shinylive', quietly = TRUE)) { stop('shinylive package is not installed') } else { cat('shinylive package is installed\n') }"
 
-        # - name: Check if shinylive is installed
-        #   run: quarto render
+        - name: Check if shinylive is installed
+          run: quarto render
 
-        # # Render the Quarto file
-        # - name: "Render working directory"
-        #   uses: quarto-dev/quarto-actions/render@v2
+        # Render the Quarto file
+        - name: "Render working directory"
+          uses: quarto-dev/quarto-actions/render@v2
 
-        # # Upload a tar file that will work with GitHub Pages
-        # # Make sure to set a retention day to avoid running into a cap
-        # # This artifact shouldn't be required after deployment onto pages was a success.
-        # - name: Upload Pages artifact
-        #   uses: actions/upload-pages-artifact@v3
-        #   with:
-        #     retention-days: 1
+        # Upload a tar file that will work with GitHub Pages
+        # Make sure to set a retention day to avoid running into a cap
+        # This artifact shouldn't be required after deployment onto pages was a success.
+        - name: Upload Pages artifact
+          uses: actions/upload-pages-artifact@v3
+          with:
+            retention-days: 1
 
-        # # Use an Action deploy to push the artifact onto GitHub Pages
-        # # This requires the `Action` tab being structured to allow for deployment
-        # # instead of using `docs/` or the `gh-pages` branch of the repository
-        # - name: Deploy to GitHub Pages
-        #   id: deployment
-        #   uses: actions/deploy-pages@v4
+        # Use an Action deploy to push the artifact onto GitHub Pages
+        # This requires the `Action` tab being structured to allow for deployment
+        # instead of using `docs/` or the `gh-pages` branch of the repository
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v4
